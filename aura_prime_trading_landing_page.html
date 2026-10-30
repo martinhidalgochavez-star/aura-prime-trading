@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA PRIME TRADING | Stop Loss con Coherencia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Montserrat & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            950: '#030712',
+                            900: '#0B1120',
+                            800: '#111827',
+                            700: '#1F2937',
+                        },
+                        gold: {
+                            300: '#FDE047',
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#CA8A04',
+                            700: '#A16207',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Gold Metallic Gradients & Effects */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF7AD 0%, #FFA900 50%, #B87B00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border {
+            border-image: linear-gradient(135deg, #FFE259 0%, #FFA751 100%) 1;
+        }
+
+        .gold-button {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFDF73 50%, #AA771C 100%);
+            box-shadow: 0 4px 20px -2px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .gold-button:hover {
+            box-shadow: 0 6px 28px 2px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .glass-card {
+            background: rgba(11, 17, 32, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .glass-card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .glass-card-hover:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Pulse aura effect */
+        @keyframes aura-pulse {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.08); }
+        }
+        .aura-bg {
+            animation: aura-pulse 8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-gray-200 font-sans antialiased selection:bg-gold-500 selection:text-navy-950 relative overflow-x-hidden">
+
+    <!-- Background Decorative Glowing Lights -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-b from-amber-600/10 via-yellow-500/5 to-transparent rounded-full blur-3xl pointer-events-none aura-bg z-0"></div>
+    <div class="fixed bottom-0 right-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-card border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gold-400 via-gold-600 to-amber-900 p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-navy-950 rounded-[7px] flex items-center justify-center">
+                        <i class="fa-solid font-serif font-extrabold text-gold-400 text-xl tracking-tighter">A</i>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-lg tracking-wider text-white group-hover:text-gold-400 transition-colors">AURA PRIME</span>
+                    <span class="text-[9px] tracking-[0.25em] text-gold-500 uppercase -mt-1 font-semibold">Trading Group</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#pilares" class="hover:text-gold-400 transition-colors">Pilares</a>
+                <a href="#mercados" class="hover:text-gold-400 transition-colors">Mercados</a>
+                <a href="#calculadora" class="hover:text-gold-400 transition-colors">Calculadora 1-2%</a>
+                <a href="#comunidad" class="hover:text-gold-400 transition-colors">Comunidad</a>
+            </nav>
+
+            <!-- Telegram CTA Header Button -->
+            <a href="https://t.me/AuraPrimeTrading" target="_blank" rel="noopener noreferrer" class="gold-button text-navy-950 font-bold px-5 py-2.5 rounded-lg text-sm flex items-center space-x-2">
+                <i class="fa-brands fa-telegram text-base"></i>
+                <span>Unirse al Telegram</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            
+            <!-- Elite Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400 text-xs font-semibold uppercase tracking-widest mb-8 animate-fade-in">
+                <span class="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
+                <span>Comunidad Institucional Exclusiva</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-none mb-6">
+                <span class="block">STOP LOSS CON COHERENCIA.</span>
+                <span class="gold-gradient-text block mt-2">PROTEGE TU CAPITAL.</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-gray-400 font-light mb-10 leading-relaxed">
+                Elevamos el trading al nivel profesional. Sin falsas promesas ni gestión irresponsable. Proyecciones precisas en <span class="text-gold-400 font-medium">XAUUSD (Oro)</span> y <span class="text-gold-400 font-medium">Forex</span> sustentadas en disciplina estricta.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="https://t.me/AuraPrimeTrading" target="_blank" rel="noopener noreferrer" class="gold-button text-navy-950 font-extrabold text-base px-8 py-4 rounded-xl w-full sm:w-auto flex items-center justify-center space-x-3">
+                    <i class="fa-brands fa-telegram text-xl"></i>
+                    <span>ACCEDER AL CANAL GRATUITO</span>
+                </a>
+                <a href="#calculadora" class="w-full sm:w-auto px-8 py-4 rounded-xl border border-gold-500/30 text-gold-400 hover:bg-gold-500/10 font-semibold text-base transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-calculator"></i>
+                    <span>Calcular Riesgo (1-2%)</span>
+                </a>
+            </div>
+<!-- ... existing code -->
+                        <div class="flex items-start space-x-4 glass-card p-4 rounded-xl border-gold-500/20">
+                            <div class="p-2 bg-gold-500/10 rounded-lg text-gold-400 mt-1">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Protección Activa de Capital</h4>
+                                <p class="text-xs text-gray-400 mt-1">Estrategias de Break-even y tomas parciales programadas para reducir la exposición al mínimo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/AuraPrimeTrading" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-3 text-gold-400 hover:text-gold-300 font-semibold transition-colors">
+                        <span>Aprender más en nuestro Telegram</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Right Column: Institutional Operational Breakdown Visual -->
+<!-- ... existing code -->
+    <!-- FINAL TELEGRAM CALL TO ACTION -->
+    <section id="comunidad" class="py-20 relative z-10">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="glass-card p-10 sm:p-16 rounded-3xl border-gold-500/40 relative overflow-hidden">
+                <!-- Background Accent Glow inside CTA -->
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white mb-6">
+                    ¿LISTO PARA OPERAR CON <span class="gold-gradient-text">COHERENCIA</span>?
+                </h2>
+                <p class="text-gray-300 max-w-2xl mx-auto text-base sm:text-lg mb-8 font-light">
+                    Únete hoy al canal público de Telegram de **AURA PRIME TRADING**. Accede a nuestros análisis diarios y forma parte de una comunidad enfocada en el crecimiento real.
+                </p>
+
+                <a href="https://t.me/AuraPrimeTrading" target="_blank" rel="noopener noreferrer" class="gold-button text-navy-950 font-extrabold text-lg px-10 py-5 rounded-xl inline-flex items-center space-x-3">
+                    <i class="fa-brands fa-telegram text-2xl"></i>
+                    <span>UNIRME AL CANAL AHORA</span>
+                </a>
+
+                <p class="text-xs text-gray-500 mt-4">Acceso 100% Gratuito • Sin Compromisos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-950 border-t border-gold-500/10 py-12 text-sm text-gray-500 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded bg-gold-500/20 flex items-center justify-center font-serif font-bold text-gold-400">A</div>
+                <span class="font-serif font-bold text-white">AURA PRIME TRADING</span>
+            </div>
+
+            <p class="text-xs text-center sm:text-left">
+                &copy; 2026 Aura Prime Trading Group. Todos los derechos reservados.
+            </p>
+
+            <div class="flex space-x-6 text-gray-400 text-lg">
+                <a href="https://instagram.com" target="_blank" class="hover:text-gold-400 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://t.me/AuraPrimeTrading" target="_blank" class="hover:text-gold-400 transition-colors"><i class="fa-brands fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE CALCULATOR SCRIPT -->
+    <script>
+        const balanceInput = document.getElementById('calcBalance');
+        const riskInput = document.getElementById('calcRisk');
+        const slInput = document.getElementById('calcSL');
+
+        const riskResult = document.getElementById('riskAmountResult');
+        const lotResult = document.getElementById('lotSizeResult');
+
+        function calculateRisk() {
+            const balance = parseFloat(balanceInput.value) || 0;
+            const riskPct = parseFloat(riskInput.value) || 1;
+            const slPips = parseFloat(slInput.value) || 1;
+
+            const riskAmount = (balance * (riskPct / 100));
+            // Standard Forex Lot estimation ($10 per pip per lot)
+            const lotSize = slPips > 0 ? (riskAmount / (slPips * 10)) : 0;
+
+            riskResult.innerText = `$${riskAmount.toFixed(2)} USD`;
+            lotResult.innerText = `${lotSize.toFixed(2)} Lotes`;
+        }
+
+        balanceInput.addEventListener('input', calculateRisk);
+        riskInput.addEventListener('change', calculateRisk);
+        slInput.addEventListener('input', calculateRisk);
+
+        calculateRisk();
+    </script>
+</body>
+</html>
